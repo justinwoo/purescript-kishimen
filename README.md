@@ -1,5 +1,7 @@
 # Purescript-Kishimen
 
+![](https://i.imgur.com/SiCbrx8.jpg)
+
 Sum types with Generics-Rep instances to Variant for free!
 
 ## Usage
