@@ -19,7 +19,8 @@
   "devDependencies": {
     "purescript-expect-inferred": "^1.0.0",
     "purescript-console": "^4.2.0",
-    "purescript-simple-json": "^4.4.0"
+    "purescript-simple-json": "^4.4.0",
+    "purescript-assert": "^4.1.0"
   },
   "resolutions": {
     "purescript-typelevel-prelude": "^4.0.0"

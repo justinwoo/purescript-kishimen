@@ -4,16 +4,25 @@ import Prelude
 
 import Data.Generic.Rep (class Generic)
 import Data.Variant (Variant)
+import Data.Variant as Variant
 import Effect (Effect)
 import Effect.Class.Console (log, logShow)
 import ExpectInferred (expectInferred)
-import Kishimen (genericSumToVariant)
+import Kishimen (genericSumToVariant, variantToGenericSum)
 import Simple.JSON as JSON
-import Type.Prelude (Proxy(..))
+import Test.Assert (assertEqual)
+import Type.Prelude (Proxy(..), SProxy(..))
 
 -- | Normally defined sum type
 data Fruit = Apple | Banana Int | Kiwi String
 derive instance genericFruit :: Generic Fruit _
+
+-- for the assertion tests below
+derive instance eqFruit :: Eq Fruit
+instance showFruit :: Show Fruit where
+  show Apple = "Apple"
+  show (Banana x) = "Banana " <> show x
+  show (Kiwi s) = "Kiwi " <> show s
 
 test1 :: Unit
 test1 = expectInferred expectedP simpleValue
@@ -25,6 +34,18 @@ test1 = expectInferred expectedP simpleValue
         , "Kiwi" :: String
         ))
     simpleValue = genericSumToVariant Apple
+
+test2 :: Unit
+test2 = expectInferred expectedP simpleValue
+  where
+    expectedP = Proxy :: _ Fruit
+    simpleValue = variantToGenericSum (Variant.inj (SProxy :: _ "Apple") {}) :: Fruit
+
+test3 :: Unit
+test3 = expectInferred expectedP simpleValue
+  where
+    expectedP = Proxy :: _ Fruit
+    simpleValue = variantToGenericSum (Variant.inj (SProxy :: _ "Banana") 3) :: Fruit
 
 main :: Effect Unit
 main = do
@@ -45,3 +66,17 @@ main = do
   -- {"type":"Apple","value":{}}
   -- {"type":"Banana","value":3}
   -- {"type":"Kiwi","value":"green"}
+
+  -- converts the other way around too, given a fixed sum type
+  assertEqual
+    { expected: Apple
+    , actual: variantToGenericSum (Variant.inj (SProxy :: _ "Apple") {})
+    }
+  assertEqual
+    { expected: Banana 3
+    , actual: variantToGenericSum (Variant.inj (SProxy :: _ "Banana") 3)
+    }
+  assertEqual
+    { expected: Kiwi "green"
+    , actual: variantToGenericSum (Variant.inj (SProxy :: _ "Kiwi") "green")
+    }
