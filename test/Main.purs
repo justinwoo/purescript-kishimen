@@ -2,6 +2,7 @@ module Test.Main where
 
 import Prelude
 
+import Data.Either (Either(..))
 import Data.Generic.Rep (class Generic)
 import Data.Variant (Variant)
 import Data.Variant as Variant
@@ -79,4 +80,22 @@ main = do
   assertEqual
     { expected: Kiwi "green"
     , actual: variantToGenericSum (Variant.inj (SProxy :: _ "Kiwi") "green")
+    }
+
+  let testJSON1 = """{"type":"Apple","value":{}}"""
+  assertEqual
+    { expected: Right Apple
+    , actual: variantToGenericSum <$> JSON.readJSON testJSON1
+    }
+
+  let testJSON2 = """{"type":"Banana","value":123}"""
+  assertEqual
+    { expected: Right (Banana 123)
+    , actual: variantToGenericSum <$> JSON.readJSON testJSON2
+    }
+
+  let testJSON3 = """{"type":"Kiwi","value":"pink"}"""
+  assertEqual
+    { expected: Right (Kiwi "pink")
+    , actual: variantToGenericSum <$> JSON.readJSON testJSON3
     }
