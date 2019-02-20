@@ -1,4 +1,6 @@
-# Purescript-Kishimen
+# PureScript-Kishimen
+
+## aka PureScript-Dan-Abramov
 
 ![](https://i.imgur.com/SiCbrx8.jpg)
 
