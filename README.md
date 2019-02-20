@@ -2,7 +2,7 @@
 
 ## aka PureScript-Dan-Abramov
 
-![](https://i.imgur.com/SiCbrx8.jpg)
+![](https://i.imgur.com/SiCbrx8.jpg) ![](https://i.imgur.com/CoexKEX.jpg)
 
 Sum types with Generics-Rep instances to Variant for free!
 
