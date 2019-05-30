@@ -12,14 +12,14 @@
     "output"
   ],
   "dependencies": {
-    "purescript-prelude": "^4.1.0",
+    "purescript-prelude": "^4.1.1",
     "purescript-generics-rep": "^6.1.1",
-    "purescript-variant": "^5.2.0"
+    "purescript-variant": "^6.0.1"
   },
   "devDependencies": {
-    "purescript-expect-inferred": "^1.0.0",
+    "purescript-expect-inferred": "^2.0.0",
     "purescript-console": "^4.2.0",
-    "purescript-simple-json": "^4.4.0",
+    "purescript-simple-json": "^6.0.0",
     "purescript-assert": "^4.1.0"
   },
   "resolutions": {
