@@ -33,7 +33,7 @@ variantToGenericSum v =
       "the impossible occurred: the input Variant was not a valid representation of the generic sum."
 
 -- | Give Generic Sum Rep, get Variant
-class GenericSumToVariant rep (r :: # Type) | rep -> r where
+class GenericSumToVariant rep (r :: Row Type) | rep -> r where
   genericSumToVariantImpl :: rep -> Variant r
   variantImplToGenericSumImpl :: Variant r -> Maybe rep
 

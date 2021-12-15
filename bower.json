@@ -12,16 +12,15 @@
     "output"
   ],
   "dependencies": {
-    "purescript-prelude": "^4.1.1",
-    "purescript-generics-rep": "^6.1.1",
-    "purescript-variant": "^6.0.1",
-    "purescript-typelevel-prelude": "^5.0.0"
+    "purescript-prelude": "^5.0.1",
+    "purescript-variant": "^7.0.3",
+    "purescript-typelevel-prelude": "^6.0.0"
   },
   "devDependencies": {
-    "purescript-expect-inferred": "^2.0.0",
-    "purescript-console": "^4.2.0",
-    "purescript-simple-json": "^6.0.0",
-    "purescript-assert": "^4.1.0"
+    "purescript-expect-inferred": "^3.0.0",
+    "purescript-console": "^5.0.0",
+    "purescript-simple-json": "^8.0.0",
+    "purescript-assert": "^5.0.0"
   },
   "resolutions": {
     "purescript-typelevel-prelude": "^4.0.0"
